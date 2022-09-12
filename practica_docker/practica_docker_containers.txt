@@ -1,0 +1,36 @@
+- Ejercicio 1
+- Crear un contenedor con la imagen de nginx
+
+	sudo docker run nginx
+
+- Ejercicio 2
+- Crear un contenedor con la imagen de nginx en modo detach, ver su estado, stoppearlo y luego eliminarlo.
+
+	sudo docker run -d nginx	# -d para modo detached
+	sudo docker ps -a		# Para ver una lista de los contenedores y su estado
+	sudo docker stop 184		# 184 son los primeros digitos del id - Con este comando lo stoppeamos
+	sudo docker rm 184		# Para eliminarlo
+
+- Ejercicio 3
+- Crear un contenedor con la imagen de nginx y asignarle un nombre.
+
+	sudo docker run --name nombre_del_contenedor nginx	# --name y luego el nombre del contenedor
+
+- Ejercicio 4
+- Crear un contenedor con la imagen de nginx y asignarle un puerto para conectarnos vía web.
+
+	sudo docker run -d -p 8080:80 nginx	# -puerto_computadora:puerto_container
+	
+- Ejercicio 5
+- Crear un contenedor con la imagen de nginx y entrar al contenedor para ver sus archivos.
+
+	sudo docker run -d --name nombre_del_container nginx
+	sudo docker exec -it nombre_del_container bash		# Para entrar al terminal del controlador
+	ls							# Muestra los archivos dentro del contenedor
+- Ejercicio 6
+- Crear un contenedor con la imagen de nginx y un index.html distinto para reemplazarlo en el servidor y cambiar su página.
+  La ruta dentro del contenedor es /usr/share/nginx/html
+
+	sudo docker run -d --name nombre_del_container nginx
+	sudo docker cp index.html nombre_del_container:/usr/share/nginx/html	# Cp index.html para copiar el archivo
+										# Nombre_del_container:ruta_de_archivo para seleciconar la ruta destino
