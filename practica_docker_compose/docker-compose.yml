@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    container_name: nginx-container
+    image: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    container_name: mysql-container
+    image: mysql:latest
+    restart: "no"
+    

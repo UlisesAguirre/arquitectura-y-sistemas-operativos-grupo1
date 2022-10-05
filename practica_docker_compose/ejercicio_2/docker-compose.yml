@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx_1:
+    container_name: nginx-container_1
+    image: nginx
+    build: .
+    ports:
+      - "80:80"
+
+  nginx_2:
+    container_name: nginx-container_2
+    image: nginx
+    build:
+      context: otro_dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "90:80"
